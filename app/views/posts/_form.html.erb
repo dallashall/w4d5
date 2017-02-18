@@ -1,0 +1,20 @@
+
+<form action="<%= action == :new ? sub_posts_url : post_url %>" method="post">
+  <%= form_auth %>
+  <% if action == :edit %>
+  <input type="hidden" name="_method" value="patch">
+  <% end %>
+  <input type="hidden" name="post[sub_id]" value="<%= params[:sub_id] || post.sub.id %>">
+  <input type="hidden" name="post[user_id]" value="<%= current_user.id %>">
+
+  <label for="title">Title</label>
+  <input type="text" name="post[title]" value="<%= post.title %>">
+
+  <label for="url">URL</label>
+  <input type="text" name="post[url]" value="<%= post.url %>">
+
+  <label for="content">Content</label>
+  <input type="text" name="post[content]" value="<%= post.content %>">
+
+  <%= submit_button %>
+</form>
