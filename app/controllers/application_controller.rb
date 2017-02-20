@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   def login(user)
     user.reset_session_token!
     session[:session_token] = user.session_token
-    redirect_to users_url
+    redirect_to subs_url
   end
 
   def logout(user)
@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
   def logged_in?
     if current_user.nil?
       redirect_to new_session_url
-    end  
+    end
   end
 
 

@@ -19,7 +19,9 @@ class User < ActiveRecord::Base
 
   before_validation :set_session_token
 
-  has_many :subs
+  has_many :subs,
+    class_name: :Sub,
+    foreign_key: :moderator_id
   has_many :posts
 
   def password=(password)
